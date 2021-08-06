@@ -6,10 +6,11 @@ alturas que alcanza en cada uno de sus primeros diez rebotes.
 """
 
 altura = 100
-salto = 1
+salto = 0
 
 while salto <=10:
+    salto += 1
     altura *= 0.6 
     print(salto, round(altura, 4))
-    salto += 1
+    
 
