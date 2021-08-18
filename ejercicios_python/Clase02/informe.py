@@ -19,7 +19,7 @@ Ejercicio 2.18: Balances
     ¿Hubo ganancia o pérdida? El programa debe imprimir por pantalla un balance con estos datos.
 
 """
-
+"""
 #2.15
 def leer_camion(nombre_archivo):
     with open(nombre_archivo, 'rt') as f:
@@ -78,7 +78,7 @@ if fruta in diccionario:
     print(f"El precio de un cajón de {fruta} es: ", diccionario[fruta])
 else:
     print(f"{fruta} no figura en el listado de precios.")
-
+"""
 #2.18
 def leer_camion(nombre_archivo):
     with open(nombre_archivo, 'rt') as f:
@@ -109,12 +109,18 @@ def leer_precios(nombre_archivo):
 
 compra = leer_camion("./ejercicios_python/Data/camion.csv")
 venta = leer_precios('./ejercicios_python/Data/precios.csv')
+costo_camion = 0
+ganancia_ventas = 0
 for producto in compra:
     if producto['nombre'] in venta:
         costo = producto['cajones']  * producto['precio']
         ganancia = venta[producto['nombre']] * producto['cajones'] 
         renta = ganancia - costo
+        costo_camion += costo
+        ganancia_ventas += ganancia
         print("Rentabilidad de",producto['nombre'], ": ", round(renta, 2))
+
+print(f"El costo del camion fue: {costo_camion} \nLo recaudado fue de: {ganancia_ventas} \nDiferencia: {ganancia_ventas- costo_camion}" ) 
 
 
 
