@@ -12,6 +12,7 @@ Ejercicio 2.17: Diccionarios como contenedores
     Escribí una función leer_precios(nombre_archivo) que a partir de un conjunto de precios como éste arme un diccionario
     donde las claves sean los nombres de frutas y verduras, y los valores sean los precios por cajón.
 """
+"""
 #2.15
 def leer_camion(nombre_archivo):
     with open(nombre_archivo, 'rt') as f:
@@ -53,7 +54,6 @@ print(total)
 #2.17
 def leer_precios(nombre_archivo):
     with open(nombre_archivo, 'rt') as f:
-        next(f)
         diccionario = {}
         for line in f:
             row = line.split(',')
@@ -71,6 +71,51 @@ if fruta in diccionario:
     print(f"El precio de un cajón de {fruta} es: ", diccionario[fruta])
 else:
     print(f"{fruta} no figura en el listado de precios.")
+"""
+#2.18
+def leer_camion(nombre_archivo):
+    with open(nombre_archivo, 'rt') as f:
+        next(f)
+        camion = []
+        for line in f:
+            row = line.split(',')
+            diccionario = {
+                'nombre' : row[0],
+                'cajones' : int(row[1]),
+                'precio': float(row[2])
+                }
+            camion.append(diccionario)
+        return camion
+
+def leer_precios(nombre_archivo):
+    with open(nombre_archivo, 'rt') as f:
+        diccionario = {}
+        for line in f:
+            row = line.split(',')
+            try:
+                fruta = row[0]
+                precio = float(row[1])
+                diccionario[fruta] = precio
+            except:
+                print("Warning")
+    return diccionario
+
+compra = leer_camion("./ejercicios_python/Data/camion.csv")#Lista de diccionario
+venta = leer_precios('./ejercicios_python/Data/precios.csv')#Diccionario de precios
+
+for producto in compra:
+    if producto['nombre'] in venta:
+        renta = (venta[producto['nombre']] * producto['cajones'] ) - (producto['cajones']  * producto['precio'])
+        print("Rentabilidad de",producto['nombre'], ": ", round(renta, 2))
+
+
+
+
+
+
+   
+
+
 
 
 

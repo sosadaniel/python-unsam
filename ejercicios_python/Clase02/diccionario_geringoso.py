@@ -5,7 +5,7 @@ Ejercicio 2.14: Diccionario geringoso
     ['banana', 'manzana', 'mandarina'].
 
 """
-
+#2.14
 lista = ['banana', 'manzana', 'mandarina']
 diccionario = {}
 capadepenapa = ''
@@ -17,5 +17,5 @@ for elemento in lista:
             capadepenapa += 'p'+ c
     diccionario[elemento] = capadepenapa
     capadepenapa = ""
-    
+
 print(diccionario)

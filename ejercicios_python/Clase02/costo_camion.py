@@ -33,7 +33,6 @@ with open("./ejercicios_python/Data/camion.csv", 'rt') as f:
 
 #2.3
 with open('./ejercicios_python/Data/precios.csv', 'rt') as f:
-    next(f)
     for line in f:
         row = line.split(',')
         if row[0] == 'Naranja':
