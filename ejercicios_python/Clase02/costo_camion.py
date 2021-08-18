@@ -12,9 +12,17 @@ Ejercicio 2.6: Transformar un script en una función
     costo_camion(nombre_archivo). Esta función recibe un nombre de archivo como entrada, lee la información sobre los
     cajones que cargó el camión y devuelve el costo de la carga de frutas como una variable de punto flotante.
 
+Ejercicio 2.8: Administración de errores
+    Modificá el programa costo_camion.py para que atrape la excepción con un bloque try - except, imprima un mensaje de 
+    aviso (warning) y continúe procesando el resto del archivo.
+
+Ejercicio 2.9: Funciones de la biblioteca
+    Modificá tu programa costo_camion.py para que use el módulo csv para leer los archivos CSV y probalo en un par
+    de los ejemplos anteriores.
 """
+
 #2.2
-with open('C:\Projects\python-unsam\ejercicios_python\Clase02\Data\camion.csv', 'rt') as f:
+with open("./ejercicios_python/Data/camion.csv", 'rt') as f:
     next(f)
     costo = 0
     for line in f:
@@ -24,7 +32,7 @@ with open('C:\Projects\python-unsam\ejercicios_python\Clase02\Data\camion.csv', 
     print(costo)
 
 #2.3
-with open('C:\Projects\python-unsam\ejercicios_python\Clase02\Data\precios.csv', 'rt') as f:
+with open('./ejercicios_python/Data/precios.csv', 'rt') as f:
     next(f)
     for line in f:
         row = line.split(',')
@@ -42,16 +50,45 @@ def costo_camion(nombre_archivo):
             costo += precio
         return costo
 
-costo =costo_camion('C:\Projects\python-unsam\ejercicios_python\Clase02\Data\camion.csv')
+costo =costo_camion("./ejercicios_python/Data/camion.csv")
 print("Costo total: ", costo)
 
-#2.7
-def buscar_precio(fruta):
-    with open('C:\Projects\python-unsam\ejercicios_python\Clase02\Data\precios.csv', 'rt') as f:
+#2.8
+def costo_camion(nombre_archivo):
+    with open(nombre_archivo, 'rt') as f:
         next(f)
+        costo = 0
         for line in f:
-            row = line.split(',')
-            if row[0] == fruta:
-                print(f"El precio de un cajón de {fruta} es: ", row[1] )
+            try: 
+                row = line.split(',')
+                precio = int(row[1]) * float(row[2])
+                costo += precio
+            except ValueError:
+                print("Warnig")
 
-buscar_precio('Frambuesa')
+        return costo
+
+costo =costo_camion("./ejercicios_python/Data/missing.csv")
+print("Costo total: ", costo)
+
+#2.9
+import csv
+def costo_camion(nombre_archivo):
+    with open(nombre_archivo, 'rt') as f:
+        rows = csv.reader(f)
+        next(rows)
+        costo = 0
+        for row in rows:
+            try: 
+                precio = int(row[1]) * float(row[2])
+                costo += precio
+            except ValueError:
+                print("Warnig")
+
+        return costo
+
+costo =costo_camion("./ejercicios_python/Data/camion.csv")
+print("Costo total: ", costo)
+
+
+
