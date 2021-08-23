@@ -51,3 +51,38 @@ def tiene_uno(expresion):
 tiene_uno('UNSAM 2020')
 tiene_uno('La novela 1984 de George Orwell')
 tiene_uno(1984)
+
+#Ejercicio 3.4: Alcances
+#Comentario: la función suma no retornaba nada por eso nos daba None como resultado
+#Solución: agregué un retun c en la función suma
+def suma(a,b):
+    c = a + b
+    return c
+
+a = 2
+b = 3
+c = suma(a,b)
+print(f"La suma da {a} + {b} = {c}")
+
+#Ejercicio 3.5: Pisando memoria
+#Comentario: el problema estaba en que al declarar el diccionario afuera del for lo que hacemos es sobre escribirlo y nunca cambia su valor
+#Solucion: Declarar el diccionario como variable local del for, así va retornando un diccionario diferene en cada iteración 
+import csv
+from pprint import pprint
+
+def leer_camion(nombre_archivo):
+    camion=[]
+    
+    with open(nombre_archivo,"rt") as f:
+        filas = csv.reader(f)
+        encabezado = next(filas)
+        for fila in filas:
+            registro={}
+            registro[encabezado[0]] = fila[0]
+            registro[encabezado[1]] = int(fila[1])
+            registro[encabezado[2]] = float(fila[2])
+            camion.append(registro)
+    return camion
+
+camion = leer_camion('../Data/camion.csv')
+pprint(camion)
