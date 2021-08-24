@@ -86,3 +86,35 @@ def leer_camion(nombre_archivo):
 
 camion = leer_camion('../Data/camion.csv')
 pprint(camion)
+
+#3.8
+
+with open('../Data/missing.csv', 'rt' ) as f:
+    filas = csv.reader(f)
+    encabezado = next(filas)
+    for n_fila, fila in enumerate(filas):
+        try:
+            registro={}
+            registro[encabezado[0]] = fila[0]
+            registro[encabezado[1]] = int(fila[1])
+            registro[encabezado[2]] = float(fila[2])
+            camion.append(registro)
+        except ValueError:
+            print(f"La fila {n_fila} No se puede interpretar {fila}")
+
+def leer_camion2(nombre_archivo):
+
+    with open(nombre_archivo, 'rt' ) as f:
+        camion= []
+        filas = csv.reader(f)
+        encabezado = next(filas)
+        for n_fila, fila in enumerate(filas):
+            try:
+                registro= dict(zip(encabezado, fila))
+                camion.append(registro)
+            except ValueError:
+                print(f"La fila {n_fila} No se puede interpretar {fila}")
+        return camion
+
+camion2 = leer_camion2('../Data/missing.csv')
+pprint(camion2)
