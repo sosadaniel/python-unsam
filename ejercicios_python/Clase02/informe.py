@@ -118,7 +118,6 @@ for producto in compra:
         renta = ganancia - costo
         costo_camion += costo
         ganancia_ventas += ganancia
-        print("Rentabilidad de",producto['nombre'], ": ", round(renta, 2))
 
 print(f"El costo del camion fue: {costo_camion} \nLo recaudado fue de: {ganancia_ventas} \nDiferencia: {ganancia_ventas- costo_camion}" ) 
 
