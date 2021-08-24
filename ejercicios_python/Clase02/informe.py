@@ -107,8 +107,8 @@ def leer_precios(nombre_archivo):
                 print("Warning")
     return diccionario
 
-compra = leer_camion("./ejercicios_python/Data/camion.csv")
-venta = leer_precios('./ejercicios_python/Data/precios.csv')
+compra = leer_camion("../Data/camion.csv")
+venta = leer_precios('../Data/precios.csv')
 costo_camion = 0
 ganancia_ventas = 0
 for producto in compra:
