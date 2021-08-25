@@ -50,9 +50,8 @@ def hacer_informe(camion, precios):
     lista = []
     for producto in camion:
         if producto['nombre'] in precios:
-            ganancia = precios[producto['nombre']] - producto['precio'] 
-            tupla = (producto['nombre'], producto['cajones'], producto['precio'], ganancia )
-            
+            cambio = precios[producto['nombre']] - producto['precio'] 
+            tupla = (producto['nombre'], producto['cajones'], producto['precio'], cambio )
             lista.append(tupla)
     return lista
 
@@ -64,19 +63,25 @@ for r in informe:
     print(r)
 
 #3.14
+print('\n-----------3.14------------')
 for nombre, cajones, precio, cambio in informe:
     print(f"{nombre:>10s} {cajones:>10d} {precio:>10.2f} {cambio:>10.2f}")
 
 #3.15 
+print('\n-----------3.15------------')
 headers = ('Nombre', 'Cajones', 'Precio', 'Cambio')
-print('%10s %10s %10s %10s' % headers)
-print('---------- ---------- ---------- ----------\n')
-for nombre, cajones, precio, cambio in informe:
-    print(f"{nombre:>10s} {cajones:>10d} {precio:>10.2f} {cambio:>10.2f}")
+
+for i,r in enumerate(informe):
+    if i == 0:
+        print('%10s %10s %10s %10s' % headers)
+        print('---------- ---------- ---------- ----------\n')
+    print('%10s %10d %10.2f %10.2f' % r)
 
 #3.16
+print('\n-----------3.16------------')
 headers = ('Nombre', 'Cajones', 'Precio', 'Cambio')
 print('%10s %10s %10s %10s' % headers)
 print('---------- ---------- ---------- ----------\n')
-for nombre, cajones, precio, cambio in informe:
-    print(f"{nombre:>10s} {cajones:>10d} {precio:>10.2f} {cambio:>10.2f}")
+for  nombre, cajones, precio, cambio in informe:
+    signo = f"${precio:>0.2f}"
+    print(f"{nombre:>10s} {cajones:>10d} {signo:>10s} {cambio:>10.2f}")
