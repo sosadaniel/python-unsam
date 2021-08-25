@@ -27,13 +27,56 @@ def contar_ejemplares(lista_arboles):
     contador = Counter()
     for arbol in lista_arboles:
         contador[arbol['nombre_com']] += 1
-    tendencia = dict(contador)
+    tendencia = contador.most_common(5)
+    return tendencia
+
+def obtener_alturas(lista_arboles, especie):
+    lista = []
+    for arbol in lista_arboles:
+        if arbol['nombre_com'] == especie:
+            lista.append(float(arbol['altura_tot']))
+    altura_prom = sum(lista) / len(lista)
+    print(f"La altura maxima es: {max(lista)}\nLa altura promedio es: {round(altura_prom, 2)}")
+        
+    return lista
+
+def obtener_inclinaciones(lista_arboles, especie):
+    lista = []
+    for arbol in lista_arboles:
+        if arbol['nombre_com'] == especie:
+            lista.append(float(arbol['inclinacio']))
     
-    print(contador)
+    return lista
 
-        
-        
+def especimen_mas_inclinado(lista_arboles):
+    maxima_inclinacion = 0
+    resultado = ""
+    especies_v = especies(lista_arboles)
+    for especie in especies_v:
+        lista = obtener_inclinaciones(lista_arboles, especie)
+        maximo = max(lista)
+        if maximo > maxima_inclinacion:
+            resultado = f"El arbol de especie: {especie} tiene la mayor incliancion con unos {maximo} grados"
+            maxima_inclinacion = maximo
+    print(resultado)
 
-arboles = leer_parque('../Data/arbolado-en-espacios-verdes.csv', "GENERAL PAZ")
+def especie_promedio_mas_inclinada(lista_arboles):
+    promedio_maximo = 0
+    resultado = ""
+    especies_v = especies(lista_arboles)
+    for especie in especies_v:
+        lista = obtener_inclinaciones(lista_arboles, especie)
+        promedio = sum(lista) / len(lista)
+        if promedio > promedio_maximo:
+            resultado = f"El arbol de especie: {especie} tiene el mayor promedio de incliancion con {promedio} grados"
+            promedio_maximo = promedio
+    print(resultado)
+    
+
+arboles = leer_parque('../Data/arbolado-en-espacios-verdes.csv', "ANDES, LOS")
 especies_arboles = especies(arboles)
 contador = contar_ejemplares(arboles)
+alturas = obtener_alturas(arboles, "Jacarandá")
+inclinacion = obtener_inclinaciones(arboles, "Jacarandá")
+especie_promedio_mas_inclinada(arboles)
+
