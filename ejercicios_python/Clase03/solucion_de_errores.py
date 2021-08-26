@@ -1,10 +1,8 @@
 #Ejercicio 3.1: Semántica
-"""
-Comentario: El error de este program era que solo iteraba una sola vez ya que estaba mal pocionado el return y nunca
-aumentaba el valor de i además de no tener en cuenta la mayuculas.
-Cambios: se cambio la posición del return False y se agregó la acéptación de mayuculas quitando el == y agregando un "in"
 
- """
+#Comentario: El error de este program era que solo iteraba una sola vez ya que estaba mal pocionado el return y nunca
+#aumentaba el valor de i
+#Cambios: se cambio la posición del return False y se agregó la acéptación de mayuculas quitando el == y agregando un "in"
 def tiene_a(expresion):
     n = len(expresion)
     i = 0
@@ -22,6 +20,8 @@ tiene_a('La novela 1984 de George Orwell')
 
 
 #Ejercicio 3.2: Sintaxis
+#Comentario: Le faltaban todos los ':' a la funcion, al if 
+#Solución: poner los dos puntos faltantes para poder correr el código
 def tiene_a(expresion):
     n = len(expresion)
     i = 0
@@ -35,6 +35,8 @@ tiene_a('UNSAM 2020')
 tiene_a('La novela 1984 de George Orwell')
 
 #Ejercicio 3.3: Tipos
+#Comentario: una de las entradas era un int y no podemos utilizar la función len
+#Solución: pasar a String la variable 'expresión'
 def tiene_uno(expresion):
     expresion = str(expresion)
     n = len(expresion)
@@ -87,34 +89,3 @@ def leer_camion(nombre_archivo):
 camion = leer_camion('../Data/camion.csv')
 pprint(camion)
 
-#3.8
-
-with open('../Data/missing.csv', 'rt' ) as f:
-    filas = csv.reader(f)
-    encabezado = next(filas)
-    for n_fila, fila in enumerate(filas):
-        try:
-            registro={}
-            registro[encabezado[0]] = fila[0]
-            registro[encabezado[1]] = int(fila[1])
-            registro[encabezado[2]] = float(fila[2])
-            camion.append(registro)
-        except ValueError:
-            print(f"La fila {n_fila} No se puede interpretar {fila}")
-
-def leer_camion2(nombre_archivo):
-
-    with open(nombre_archivo, 'rt' ) as f:
-        camion= []
-        filas = csv.reader(f)
-        encabezado = next(filas)
-        for n_fila, fila in enumerate(filas):
-            try:
-                registro= dict(zip(encabezado, fila))
-                camion.append(registro)
-            except ValueError:
-                print(f"La fila {n_fila} No se puede interpretar {fila}")
-        return camion
-
-camion2 = leer_camion2('../Data/missing.csv')
-pprint(camion2)

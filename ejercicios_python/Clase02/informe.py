@@ -92,6 +92,7 @@ def leer_camion(nombre_archivo):
                 'precio': float(row[2])
                 }
             camion.append(diccionario)
+        print(camion)
         return camion
 
 def leer_precios(nombre_archivo):

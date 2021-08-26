@@ -7,10 +7,10 @@ Ejercicio 3.17: Tablas de multiplicar
 encabezado = tuple(range(0,10))
 print('  %5d %5d %5d %5d %5d %5d %5d %5d %5d %5d\n' % encabezado)
 print(("-------------") *5, "\n")
-for filas in range(0,10):
+for filas in range(10):
     num = 0
     tabla = ""
-    for columnas in range(0,10):
+    for columnas in range(10):
         tabla += f"{num:>5d} "
         num += filas 
     print(f"{filas}:{tabla:>5s} ")

@@ -5,6 +5,7 @@ Ejercicio 3.18: Lectura de los árboles de un parque
 import csv
 from collections import Counter
 
+#3.18
 def leer_parque(nombre_archivo, parque):
     with open(nombre_archivo, encoding= "utf8") as f:
         rows = csv.reader(f)
@@ -15,7 +16,7 @@ def leer_parque(nombre_archivo, parque):
                 diccionario = dict(zip(encabezado, row))
                 lista.append(diccionario)
     return lista
-
+#3.19
 def especies(lista_arboles):
     lista = []
     for arbol in lista_arboles:
@@ -23,6 +24,7 @@ def especies(lista_arboles):
     unicos = set(lista)
     return unicos
 
+#3.20
 def contar_ejemplares(lista_arboles):
     contador = Counter()
     for arbol in lista_arboles:
@@ -30,6 +32,7 @@ def contar_ejemplares(lista_arboles):
     tendencia = contador.most_common(5)
     return tendencia
 
+#3.21
 def obtener_alturas(lista_arboles, especie):
     lista = []
     for arbol in lista_arboles:
@@ -39,7 +42,7 @@ def obtener_alturas(lista_arboles, especie):
     print(f"La altura maxima es: {max(lista)}\nLa altura promedio es: {round(altura_prom, 2)}")
         
     return lista
-
+#3.22
 def obtener_inclinaciones(lista_arboles, especie):
     lista = []
     for arbol in lista_arboles:
@@ -48,6 +51,7 @@ def obtener_inclinaciones(lista_arboles, especie):
     
     return lista
 
+#3.23
 def especimen_mas_inclinado(lista_arboles):
     maxima_inclinacion = 0
     resultado = ""
@@ -60,6 +64,7 @@ def especimen_mas_inclinado(lista_arboles):
             maxima_inclinacion = maximo
     print(resultado)
 
+#3.24
 def especie_promedio_mas_inclinada(lista_arboles):
     promedio_maximo = 0
     resultado = ""

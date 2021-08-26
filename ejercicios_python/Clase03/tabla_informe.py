@@ -63,25 +63,22 @@ for r in informe:
     print(r)
 
 #3.14
-print('\n-----------3.14------------')
 for nombre, cajones, precio, cambio in informe:
     print(f"{nombre:>10s} {cajones:>10d} {precio:>10.2f} {cambio:>10.2f}")
 
 #3.15 
-print('\n-----------3.15------------')
 headers = ('Nombre', 'Cajones', 'Precio', 'Cambio')
 
 for i,r in enumerate(informe):
     if i == 0:
         print('%10s %10s %10s %10s' % headers)
-        print('---------- ---------- ---------- ----------\n')
+        print(('---------- ') * 4, '\n')
     print('%10s %10d %10.2f %10.2f' % r)
 
 #3.16
-print('\n-----------3.16------------')
 headers = ('Nombre', 'Cajones', 'Precio', 'Cambio')
 print('%10s %10s %10s %10s' % headers)
-print('---------- ---------- ---------- ----------\n')
+print(('---------- ') * 4, '\n')
 for  nombre, cajones, precio, cambio in informe:
     signo = f"${precio:>0.2f}"
     print(f"{nombre:>10s} {cajones:>10d} {signo:>10s} {cambio:>10.2f}")
