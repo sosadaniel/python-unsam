@@ -50,9 +50,9 @@ def scatter_hd3(arboleda):
     arbol2 = np.array(arboles[especies[1]])
     arbol3 = np.array(arboles[especies[2]])
 
-    plt.scatter(arbol1[:, 0], arbol1[:,1], alpha=0.5, color = 'blue') 
-    plt.scatter(arbol2[:, 0], arbol2[:,1], alpha=0.5, color = 'green')
-    plt.scatter(arbol3[:, 0], arbol3[:,1], alpha=0.5, color = 'red')  
+    plt.scatter(arbol1[:, 1], arbol1[:,0], alpha=0.5, color = 'blue') 
+    plt.scatter(arbol2[:, 1], arbol2[:,0], alpha=0.5, color = 'green')
+    plt.scatter(arbol3[:, 1], arbol3[:,0], alpha=0.5, color = 'red')  
     plt.xlabel("diametro (cm)")
     plt.ylabel("alto (m)")
     plt.title("Relación diámetro-alto")
@@ -75,5 +75,4 @@ def main():
     #especies = ['Eucalipto', 'Palo borracho rosado', 'Jacarandá']
     #arboles = medidas_de_especies(especies, arboleda)
     scatter_hd3(arboleda)
-    
     
