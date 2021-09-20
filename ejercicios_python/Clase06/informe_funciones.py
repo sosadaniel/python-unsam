@@ -1,30 +1,20 @@
+from fileparse import parse_csv
+
+
 #2.18
 def leer_camion(nombre_archivo):
-    with open(nombre_archivo, 'rt') as f:
-        next(f)
-        camion = []
-        for line in f:
-            row = line.split(',')
-            diccionario = {
-                'nombre' : row[0],
-                'cajones' : int(row[1]),
-                'precio': float(row[2])
-                }
-            camion.append(diccionario)
-        print(camion)
-        return camion
 
+    camion = parse_csv(nombre_archivo, types= [str, int, float])
+    return camion
+  
 def leer_precios(nombre_archivo):
-    with open(nombre_archivo, 'rt') as f:
-        diccionario = {}
-        for line in f:
-            row = line.split(',')
-            try:
-                fruta = row[0]
-                precio = float(row[1])
-                diccionario[fruta] = precio
-            except:
-                print("Warning")
+    datos = parse_csv(nombre_archivo, has_headers= False)
+    diccionario = {}  
+    for dato in datos:
+        try:
+            diccionario[str(dato[0])] = float(dato[1])
+        except:
+            print("Warning")
     return diccionario
 
 def imprimir_informe(compra, venta):
@@ -45,4 +35,4 @@ def informe_camion(nombre_archivo_camion, nombre_archivo_precios):
     venta = leer_precios(nombre_archivo_precios)
     imprimir_informe(compra, venta)
 
-informe_camion('../Data/camion.csv', '../Data/precios.csv')
+#informe_camion('../Data/camion.csv', '../Data/precios.csv')
