@@ -29,23 +29,5 @@ def prob_generala(N):
     print(generala)
     return resultado
 
-#5.3
-def cocumple(n):
-    cumples = []
-    for i in range(30):  
-        cumples.append(random.randint(0,365))      
-    print(cumples)
 
-def repite_cumple(cumples):
-    for cumple in cumples:
-        print()
-    
-    return None
-
-
-def main():
-    
-    print(cocumple(10000))
-
-main()
 

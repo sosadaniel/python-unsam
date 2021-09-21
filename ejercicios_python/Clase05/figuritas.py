@@ -102,5 +102,3 @@ def main():
 
     plotear_figuritas(n_paquetes)
     
-
-    return None 

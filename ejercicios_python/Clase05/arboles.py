@@ -3,6 +3,7 @@ import pprint
 import matplotlib.pyplot as plt
 import numpy as np
 np.random.seed(19680801)
+
 #Ejercicio 4.15: Lectura de todos los árboles
 def leer_parque(nombre_archivo):
     with open(nombre_archivo, encoding= "utf8") as f:
